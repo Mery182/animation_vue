@@ -1,7 +1,49 @@
+# Проект «Исследование реализаций анимации на фреймворке Vue.js»
 
-<img width="1208" alt="Снимок экрана 2024-06-28 в 01 26 04" src="https://github.com/Mery182/animation_vue/assets/58829464/47bccb1b-a35b-4c55-b2d8-05c0e6c35c88">
-npm install<br>
-npm run dev<br>
-npm run build<br>
-cd dist<br>
-http-server
+Веб-приложение, собранное на Vite, демонстрирующее четыре разных подхода к анимации:
+
+- **CSS Animation**  
+  Анимация с помощью чистого CSS (ключевые кадры и переходы).
+
+- **JS Animation**  
+  Ручная анимация через `requestAnimationFrame`.
+
+- **Anime.js**  
+  Анимация с использованием популярной библиотеки [Anime.js](https://animejs.com/).
+
+- **GSAP**  
+  Анимация с помощью мощного движка [GreenSock (GSAP)](https://greensock.com/).
+
+---
+
+## Метрики производительности
+
+Проект собирает и в реальном времени отображает ключевые показатели производительности:
+
+- **Web Vitals** (LCP, FCP, TTFB, INP, CLS)  
+  Через библиотеку `web-vitals` выводятся в виде HUD-панели в правом верхнем углу.
+
+- **Stats.js**  
+  Панель FPS (кадров в секунду), загружаемая с помощью `stats.js`, отображается в левом верхнем углу.
+
+---
+
+## Стек технологий
+
+- **Vue 3** + Composition API
+- **Vite** (быстрая сборка и HMR)
+- **web-vitals** (Google)
+- **stats.js**
+- **Anime.js**
+- **GSAP**
+- **CSS3** (Flex/Grid, keyframes, transitions)
+
+---
+
+## Быстрый старт
+
+1. Клонировать репозиторий
+   ```bash
+   git clone <URL>
+   cd <project-folder>
+   ```
