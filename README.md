@@ -2,14 +2,10 @@
 
 Веб-приложение, собранное на Vite, демонстрирующее четыре разных подхода к анимации:
 
-- **CSS Animation**  
-  CSS Анимация
-
+- **CSS Animation**
 - **JS Animation**
-
 - **Anime.js**  
   Анимация с использованием библиотеки [Anime.js](https://animejs.com/).
-
 - **GSAP**  
   Анимация с помощью [GreenSock (GSAP)](https://greensock.com/).
 
