@@ -45,4 +45,9 @@
    ```bash
    git clone <URL>
    cd <project-folder>
+   npm install
+   npm run dev
+   npm run build
+   cd dist
+   http-server
    ```
