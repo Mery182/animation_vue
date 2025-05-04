@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../components/Home.vue";
 import Anime from "../components/Anime.vue";
 import GSAP from "../components/GSAP.vue";
