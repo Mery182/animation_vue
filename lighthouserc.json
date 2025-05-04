@@ -1,0 +1,16 @@
+{
+  "ci": {
+    "collect": {
+      "url": [
+        "https://mery182.github.io/animation_vue/",
+        "https://mery182.github.io/animation_vue/js.html",
+        "https://mery182.github.io/animation_vue/anime.html",
+        "https://mery182.github.io/animation_vue/gsap.html"
+      ],
+      "numberOfRuns": 5
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}

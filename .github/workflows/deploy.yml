@@ -1,3 +1,34 @@
+# name: Deploy Vue.js App to GitHub Pages
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: "20"
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Build project
+#         run: npm run build
+
+#       - name: Deploy to GitHub Pages
+#         uses: peaceiris/actions-gh-pages@v4
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./dist
 name: Deploy Vue.js App to GitHub Pages
 
 on:
@@ -8,10 +39,13 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
+    outputs:
+      page-url: ${{ steps.set-url.outputs.PAGE_URL }}
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # забираем всю историю
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -19,13 +53,37 @@ jobs:
           node-version: "20"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build project
         run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
+        id: deploy
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+
+      - name: Compute Pages URL
+        id: set-url
+        run: |
+          echo "PAGE_URL=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_OUTPUT
+
+  lighthouse:
+    name: 🚀 Run Lighthouse CI
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository (для budget.json и .git)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # обязательно
+
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./lighthouserc.json
+          budgetPath: ./budget.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true

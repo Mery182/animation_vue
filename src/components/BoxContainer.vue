@@ -22,7 +22,7 @@ export default {
     const scale = 1.4 - 0.6;
 
     const createBoxes = () => {
-      for (let x = 0; x < 1000; x++) {
+      for (let x = 0; x < 200; x++) {
         boxes.value.push({
           id: x,
           transform: '',
