@@ -19,6 +19,5 @@ jobs:
             https://mery182.github.io/animation_vue/#/js
             https://mery182.github.io/animation_vue/#/anime
             https://mery182.github.io/animation_vue/#/gsap
-          budgetPath: ./budget.json
           uploadArtifacts: true
           temporaryPublicStorage: true
